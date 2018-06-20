@@ -2,21 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
 import { OrganizationComponent } from './components/organization/organization.component';
-
-
+import { StaffComponent } from './components/staff/staff.component';
 
 const appRoutes: Routes = [
+
     {path: 'quantela',
-    component: OrganizationComponent,
+    component: LandingComponent,
     children: [
-      //{path: 'profile', component: ProfileComponent},
-        //{path: '', component: LandingComponent},
+        {path: '', component: OrganizationComponent},
+        {path: 'staff', component: StaffComponent},
 
     ]},
-    {
-        path: '',
-        component: OrganizationComponent
-    },
+    { path: '', redirectTo: '/quantela', pathMatch: 'full' },
+
     {
         path: '**',
         redirectTo: ''

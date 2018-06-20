@@ -10,13 +10,15 @@ import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { OrganizationComponent } from './components/organization/organization.component';
+import { StaffComponent } from './components/staff/staff.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    OrganizationComponent
+    OrganizationComponent,
+    StaffComponent
   ],
   imports: [
     BrowserModule,

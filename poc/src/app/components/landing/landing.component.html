@@ -1,3 +1,15 @@
-<p>
-  landing works!
-</p>
+<mat-toolbar color="primary">
+   <a mat-button [routerLink]="['/quantela']">Organization</a>
+  <a mat-button [routerLink]="['/quantela/staff']">Staff</a>
+  <a mat-button>Project</a>
+  <a mat-button>Warehouse</a>
+  <a mat-button>Maps</a>
+  <a mat-button>Assets</a>
+  <a mat-button>Surveys</a>
+  <a mat-button>More</a>
+</mat-toolbar>
+<router-outlet></router-outlet>
+
+<!--<a [routerLink]="['/quantela']">Organization</a>
+<a [routerLink]="['/quantela/staff']">Staff</a>
+<router-outlet></router-outlet>-->
