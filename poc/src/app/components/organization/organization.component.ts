@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import {MatTableDataSource, MatPaginator, MatSort} from '@angular/material';
+
 @Component({
   selector: 'app-organization',
   templateUrl: './organization.component.html',
   styleUrls: ['./organization.component.css']
 })
-export class OrganizationComponent implements OnInit {
+export class OrganizationComponent implements OnInit, AfterViewInit{
   displayedColumns = ['position', 'firstName', 'lastName', 'email'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
@@ -18,6 +19,14 @@ export class OrganizationComponent implements OnInit {
  
     
   }
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  
+    ngAfterViewInit() {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
 
 
 }
