@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
+import { OrganizationComponent } from './components/organization/organization.component';
+
 
 
 const appRoutes: Routes = [
     {path: 'quantela',
-    component: LandingComponent,
+    component: OrganizationComponent,
     children: [
       //{path: 'profile', component: ProfileComponent},
         //{path: '', component: LandingComponent},
@@ -13,7 +15,7 @@ const appRoutes: Routes = [
     ]},
     {
         path: '',
-        component: LandingComponent
+        component: OrganizationComponent
     },
     {
         path: '**',
