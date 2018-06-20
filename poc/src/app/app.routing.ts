@@ -6,14 +6,14 @@ import { StaffComponent } from './components/staff/staff.component';
 
 const appRoutes: Routes = [
 
-    {path: 'quantela',
+    {path: 'domainname',
     component: LandingComponent,
     children: [
         {path: '', component: OrganizationComponent},
         {path: 'staff', component: StaffComponent},
 
     ]},
-    { path: '', redirectTo: '/quantela', pathMatch: 'full' },
+    { path: '', redirectTo: '/domainname', pathMatch: 'full' },
 
     {
         path: '**',
