@@ -9,6 +9,11 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 })
 export class CreateOrganizationComponent implements OnInit {
   organizationForm: FormGroup;
+  foods = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
 
   constructor() { }
 
