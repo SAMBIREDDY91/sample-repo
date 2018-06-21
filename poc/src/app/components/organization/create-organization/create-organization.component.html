@@ -2,43 +2,43 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <h3>Create Organization</h3>
-        <form role="form" novalidate [formGroup]="organizationForm"  (ngSubmit)="onCreateOrganization(organizationForm)" class="orgform">
+        <form role="form" novalidate [formGroup]="organizationForm" class="orgform">
              <mat-form-field class="orgform-full-width">
-               <input matInput placeholder="Enter Name" formControlName="orgnizationName"
+               <input matInput placeholder="Enter Name" formControlName="name"
                         [errorStateMatcher]="matcher">
-                        <mat-error *ngIf="organizationForm.get('orgnizationName').hasError('required') && ( organizationForm.get('orgnizationName').touched || organizationForm.get('orgnizationName').dirty)">
+                        <mat-error *ngIf="organizationForm.get('name').hasError('required') && ( organizationForm.get('name').touched || organizationForm.get('name').dirty)">
                               Name is required
                         </mat-error>
              </mat-form-field>
              <mat-form-field class="orgform-full-width">
-               <input matInput placeholder="Enter Acronym"  formControlName="orgnizationAcronym"
+               <input matInput placeholder="Enter Acronym"  formControlName="acronym"
                         [errorStateMatcher]="matcher">
-                        <mat-error *ngIf="organizationForm.get('orgnizationAcronym').hasError('required') && ( organizationForm.get('orgnizationAcronym').touched || organizationForm.get('orgnizationAcronym').dirty)">
+                        <mat-error *ngIf="organizationForm.get('acronym').hasError('required') && ( organizationForm.get('acronym').touched || organizationForm.get('acronym').dirty)">
                               Acronym is required
                         </mat-error>
              </mat-form-field>
 
              <mat-form-field>
-                <mat-select placeholder="Type" formControlName="orgnizationType">
-                  <mat-option value="1">1</mat-option>
-                  <mat-option value="1">2</mat-option>
-                  <mat-option value="1">3</mat-option>
-                  <mat-option value="1">4</mat-option>
+                <mat-select placeholder="Type" formControlName="type">
+                  <mat-option value="Academic">Academic</mat-option>
+                  <mat-option value="Government">Government</mat-option>
+                  <mat-option value="NGO">NGO</mat-option>
+                  <mat-option value="Private">Private</mat-option>
                 </mat-select>
-                <mat-error *ngIf="organizationForm.get('orgnizationType').hasError('required') && ( organizationForm.get('orgnizationType').touched || organizationForm.get('orgnizationType').dirty)" >
+                <mat-error *ngIf="organizationForm.get('type').hasError('required') && ( organizationForm.get('type').touched || organizationForm.get('type').dirty)" >
                       Type is required
                 </mat-error>
               </mat-form-field>
 
 
               <mat-form-field>
-                  <mat-select placeholder="Home Country" formControlName="orgnizationHomeCountry">
-                    <mat-option value="1">1</mat-option>
-                        <mat-option value="1">2</mat-option>
-                        <mat-option value="1">3</mat-option>
-                        <mat-option value="1">4</mat-option>
+                  <mat-select placeholder="Home Country" formControlName="homeCountry">
+                    <mat-option value="United Country">United Country</mat-option>
+                        <mat-option value="India">India</mat-option>
+                        <mat-option value="Poland">Poland</mat-option>
+                        <mat-option value="Zimbabwe">Zimbabwe</mat-option>
                   </mat-select>
-                              <mat-error *ngIf="organizationForm.get('orgnizationHomeCountry').hasError('required') && ( organizationForm.get('orgnizationHomeCountry').touched || organizationForm.get('orgnizationHomeCountry').dirty)" >
+                              <mat-error *ngIf="organizationForm.get('homeCountry').hasError('required') && ( organizationForm.get('homeCountry').touched || organizationForm.get('homeCountry').dirty)" >
                                     Home Country is required
                               </mat-error>
               </mat-form-field>
@@ -71,7 +71,7 @@
                 </mat-error>
               </mat-form-field>
 
-              <button md-button color="primary" class="submit-btn" type="button" [disabled]="organizationForm.invalid">Submit</button>
+              <button mat-raised-button color="primary" type="submit" (click)="createOrganization(organizationForm)" [disabled]="organizationForm.invalid">Submit</button>
        </form>
     </div>
     <div class="col-md-2"></div>
