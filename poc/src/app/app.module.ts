@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -30,7 +31,8 @@ import { ListOrganizationComponent } from './components/organization/list-organi
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

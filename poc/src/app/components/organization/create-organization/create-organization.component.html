@@ -2,46 +2,57 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <h3>Create Organization</h3>
-        <form action="/action_page.php">
+        <form role="form" novalidate [formGroup]="organizationForm"  (ngSubmit)="onCreateOrganization(organizationForm)">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Enter Name">
+                  <input type="text" class="form-control" placeholder="Enter Name" formControlName="orgnizationName">
+                  <p *ngIf="organizationForm.get('orgnizationName').hasError('required') && ( organizationForm.get('orgnizationName').touched || organizationForm.get('orgnizationName').dirty)" class="red-text"> Name is required</p>
                 </div>
+
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Enter Acronym">
+                  <input type="text" class="form-control" placeholder="Enter Acronym" formControlName="orgnizationAcronym">
+                  <p *ngIf="organizationForm.get('orgnizationAcronym').hasError('required') && ( organizationForm.get('orgnizationAcronym').touched || organizationForm.get('orgnizationAcronym').dirty)" class="red-text"> Acronym is required</p>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                            <select class="form-control">
+                            <select class="form-control" formControlName="orgnizationType">
                                     <option>Select Type</option>
                                     <option>2</option>
                                     <option>3</option>
                                     <option>4</option>
                                   </select>
+                      <p *ngIf="organizationForm.get('orgnizationType').hasError('required') && ( organizationForm.get('orgnizationType').touched || organizationForm.get('orgnizationType').dirty)" class="red-text"> Type is required</p>
+
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                            <select class="form-control">
+                            <select class="form-control" formControlName="orgnizationHomeCountry">
                                    <option>Select Home Country</option>
                                     <option>2</option>
                                     <option>3</option>
                                     <option>4</option>
                                   </select>
+                                  <p *ngIf="organizationForm.get('orgnizationHomeCountry').hasError('required') && ( organizationForm.get('orgnizationHomeCountry').touched || organizationForm.get('orgnizationHomeCountry').dirty)" class="red-text"> Home Country is required</p>
+
                       </div>
                     </div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Phone #">
+                  <input type="text" class="form-control" placeholder="Phone #" formControlName="phone" maxlength="10">
+                  <p *ngIf="organizationForm.get('phone').hasError('required') && ( organizationForm.get('phone').touched || organizationForm.get('phone').dirty)" class="red-text"> Phone is required</p>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Website">
+                  <input type="text" class="form-control" placeholder="Website" formControlName="website">
+                      <p *ngIf="organizationForm.get('website').hasError('required') && ( organizationForm.get('website').touched || organizationForm.get('website').dirty)" class="red-text"> Website is required</p>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Year">
+                  <input type="text" class="form-control" placeholder="Year" formControlName="year">
+                  <p *ngIf="organizationForm.get('year').hasError('required') && ( organizationForm.get('year').touched || organizationForm.get('year').dirty)" class="red-text"> Year is required</p>
+
                 </div>
 
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default" [disabled]="organizationForm.invalid">Submit</button>
        </form>
     </div>
     <div class="col-md-2"></div>
