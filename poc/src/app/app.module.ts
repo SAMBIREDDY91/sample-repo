@@ -5,6 +5,8 @@ import {MaterialModule} from './material.module';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import {ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -14,7 +16,8 @@ import { OrganizationComponent } from './components/organization/organization.co
 import { StaffComponent } from './components/staff/staff.component';
 import { CreateOrganizationComponent } from './components/organization/create-organization/create-organization.component';
 import { ListOrganizationComponent } from './components/organization/list-organization/list-organization.component';
-
+import { OrganizationService } from './services/organization.service';
+import { RestService } from './services/rest.service';
 
 
 @NgModule({
@@ -32,9 +35,13 @@ import { ListOrganizationComponent } from './components/organization/list-organi
     MaterialModule,
     AppRoutingModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    OrganizationService,
+    RestService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
