@@ -1,8 +1,10 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ViewContainerRef } from '@angular/core';
 import {MatTableDataSource, MatPaginator, MatSort} from '@angular/material';
+import { ToastsManager } from 'ng5-toastr/ng5-toastr';
 
 import { OrganizationService} from '../../../services/organization.service';
 import { Organization } from '../../../domain/organization';
+
 
 @Component({
   selector: 'app-list-organization',
@@ -11,13 +13,15 @@ import { Organization } from '../../../domain/organization';
 })
 export class ListOrganizationComponent implements OnInit, AfterViewInit {
   
-  displayedColumns = ['name', 'acronym', 'type', 'website'];
+  displayedColumns = ['name', 'acronym', 'type', 'website', 'action'];
   public organizationDetails;
  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   
-  constructor(private organizationService: OrganizationService) { }
+  constructor(private organizationService: OrganizationService, public toastr: ToastsManager, vcr: ViewContainerRef) {
+    this.toastr.setRootViewContainerRef(vcr);
+   }
 
   ngOnInit() {
     this.getOrganizationDetails();
@@ -31,6 +35,14 @@ export class ListOrganizationComponent implements OnInit, AfterViewInit {
   private getOrganizationDetails() {
     this.organizationService.getOrganizationDetails().subscribe((res: any) => {
       this.organizationDetails = new MatTableDataSource(res);
+    });
+  }
+
+  deleteOrganization(orgId){
+    this.organizationService.deleteOrganization(orgId).subscribe((res) => {
+      this.toastr.success('ORGANIZATION deleted successfully!', 'Success!')
+    }, error => {
+      this.toastr.error('ORGANIZATION NOT deleted!', 'Failed!');
     });
   }
 

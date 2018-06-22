@@ -16,4 +16,8 @@ export class OrganizationService {
     return this.restService.post(createRequest, AppConstants.CREATE_ORGANIZATION);
   }
 
+  public deleteOrganization(orgId): Observable<any> {
+    return this.restService.delete(AppConstants.DELETE_ORGANIZATION(orgId));
+  }
+
 }
