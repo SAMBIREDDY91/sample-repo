@@ -17,10 +17,7 @@ export class RestService {
     return this.http.get<T>(url + id);
   }
 
-  public post<T>(itemName: any, url: string): Observable<T> {
-    console.log('create plan');
-    const postObj = JSON.stringify(itemName);
-    console.log(postObj);
+  public post<T>(postObj: any, url: string): Observable<T> {
     return this.http.post<T>(url, postObj);
   }
 

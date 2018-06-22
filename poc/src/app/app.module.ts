@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import {ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {ToastModule} from 'ng5-toastr/ng5-toastr';
 
 
 
@@ -36,7 +37,8 @@ import { RestService } from './services/rest.service';
     AppRoutingModule,
     RouterModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule.forRoot()
   ],
   providers: [
     OrganizationService,

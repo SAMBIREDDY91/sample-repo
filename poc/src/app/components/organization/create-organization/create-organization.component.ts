@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { OrganizationService} from '../../../services/organization.service';
 import { Organization } from '../../../domain/organization';
+import { ToastsManager } from 'ng5-toastr/ng5-toastr';
 
 @Component({
   selector: 'app-create-organization',
@@ -12,8 +13,9 @@ export class CreateOrganizationComponent implements OnInit {
   organizationForm: FormGroup;
   public createOrgPayload: Organization;
 
-  constructor(private organizationService: OrganizationService) {
+  constructor(private organizationService: OrganizationService, public toastr: ToastsManager, vcr: ViewContainerRef) {
     this.createOrgPayload = new Organization();
+    this.toastr.setRootViewContainerRef(vcr);
    }
 
   ngOnInit() {
@@ -36,10 +38,15 @@ export class CreateOrganizationComponent implements OnInit {
     this.createOrgPayload = organizationForm.value;
     console.log("createOrgPayload:::",this.createOrgPayload);
     this.organizationService.createOrganization(this.createOrgPayload).subscribe((res) => {
-      //this.toastr.success('PLAYER created successfully!', 'Success!');
+      this.toastr.success('ORGANIZATION created successfully!', 'Success!',{positionClass:'toast-top-right'});
+      this.organizationForm.reset();
+      Object.keys(this.organizationForm.controls).forEach(key => {
+        this.organizationForm.controls[key].setErrors(null)
+      });
     },
     error => {
-      //this.toastr.error('ORGANIZATION NOT created!', 'Failed!');
+      this.organizationForm.reset();
+      this.toastr.error('ORGANIZATION NOT created!', 'Failed!');
     });
   }
 
