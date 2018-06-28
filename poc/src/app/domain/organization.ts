@@ -1,12 +1,12 @@
 export class Organization {
-    protected id:number;
-    protected name: string;
-    protected acronym: string;
-    protected type: string;
-    protected homeCountry: string;
-    protected year: number;
-    protected website: string;
-    protected logo: string;
-    protected comment: string;
+    public id:number;
+    public name: string;
+    public acronym: string;
+    public type: string;
+    public homeCountry: string;
+    public year: number;
+    public website: string;
+    public logo: string;
+    public comment: string;
   }
   
