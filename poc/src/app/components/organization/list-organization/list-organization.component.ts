@@ -30,8 +30,9 @@ export class ListOrganizationComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
   }
 
-  private getOrganizationDetails() {
+  public getOrganizationDetails() {
     this.organizationService.getOrganizationDetails().subscribe((res: any) => {
+      this.organizationDetails = res;
       this.organizationDetails = new MatTableDataSource(res);
       this.organizationDetails.paginator = this.paginator;
       this.organizationDetails.sort = this.sort;
